@@ -18,4 +18,34 @@
 # How many dice to roll? 20
 # How many sides? 20
 # Here are the results: [18, 19, 6, 8, 13, 6, 6, 6, 18, 12, 20, 10, 14, 8, 14, 17, 12, 15, 20, 17]
+import random
+random.seed()
+flagCount=False
+flagSides=False
+diceCount=0
+diceSides=0
+rollsFinal=[]
 
+def functionThatMightRunWhenYouRollDice(funcCount, funcSides, funcList):
+    for i in range(funcCount):
+            diceRoll=random.randint(1,funcSides)
+            funcList.append(diceRoll)
+    return funcList
+
+while flagCount==False:
+    try:
+        diceCount = int(input("How many dice to roll? "))
+        flagCount = True
+    except:
+        print("Not an integer. Please try again. ")
+
+while flagSides==False:
+    try:
+        diceSides = int(input("How many sides for each die? "))
+        flagSides = True
+    except:
+        print("Not an integer. Please try again. ")
+
+rollsFinal = functionThatMightRunWhenYouRollDice(diceCount, diceSides, rollsFinal)
+
+print(f"Dice roll results are as follows: {rollsFinal}")
